@@ -7,7 +7,6 @@ empHrs=8
 
 #it will give 0 or 1 by using random
 #check employee is present or absent
-
 attendance_check=$(( RANDOM%2 ))
 
 if [ $attendance_check -eq 1 ]
