@@ -8,7 +8,7 @@ workingDays=20
 workingHrs=100
 totalWorkHrs=0
 totalWorkDays=0
-declare -a dailySalary
+declare -A dailySalary
 getWorkHours()
 {
 	case $1 in
@@ -31,8 +31,15 @@ do
 	getWorkHours $attendance_check
 	totalWorkHrs=$(( $totalWorkHrs+$empHrs ))
 	salary=$(( $empRatePerHr*$empHrs ))
-	dailySalary[$totalWorkDays]=$salary
+	dailySalary["$totalWorkDays"]=$salary
 	totalSalary=$(( $totalSalary+$salary ))
 done
+
 echo "total salary of a employee: "$totalSalary
-echo ${dailySalary[@]}
+echo -n "     day      "
+echo "salary"
+for key in ${!dailySalary[@]}
+do
+	echo -n "     $key         "
+	echo "${dailySalary[$key]}"
+done
