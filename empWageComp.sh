@@ -3,24 +3,22 @@ echo "Welcome to Employee Wage Computation Program"
 
 #constant values
 empRatePerHr=20
-empFullTimeHrs=8
-empPartTimeHrs=4
+attendance_check=$(( RANDOM%3 ))
 
-#it will give 0 or 1 by using random
-#check employee is present or absent
-attendance_check=$(( RANDOM%2 ))
+case $attendance_check in
+	0)
+		echo "employee is full time present"
+		empHrs=8;;
+	1)
+		echo "employee is half time present"
+		empHrs=4;;
+	2)
+		echo "employee is absent"
+		empHrs=0;;
+	*)
+		echo "INVALID";;
+esac
 
-if [ $attendance_check -eq 1 ]
-then
-	echo "employee is present"
-	salary=$(( $empRatePerHr*$empFullTimeHrs ))
-	halfSalary=$(($empRatePerHr*$empPartTimeHrs))
-else
-	echo "employee is absent"
-	salary=0
-	halfSalary=0
-	salary=0
-fi
+salary=$(( $empRatePerHr*$empHrs ))
 
 echo "salary of a employee: "$salary
-echo "part time salary of an employee: "$halfSalary
