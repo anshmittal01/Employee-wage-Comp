@@ -3,7 +3,6 @@ echo "Welcome to Employee Wage Computation Program"
 
 #constant values
 empRatePerHr=20
-
 attendance_check=$(( RANDOM%3 ))
 
 case $attendance_check in
